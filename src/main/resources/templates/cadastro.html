@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragmentos/layout :: cabecalho('Criar conta')}"></head>
+
+<body class="tela-centralizada">
+
+<main class="cartao">
+    <h1>Criar conta</h1>
+    <p class="subtitulo">Novos usuarios entram com o perfil padrao</p>
+
+    <form th:action="@{/cadastro}" th:object="${cadastroForm}" method="post">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" th:field="*{nome}">
+        <span class="erro-campo" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" th:field="*{email}">
+        <span class="erro-campo" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" th:field="*{senha}">
+        <span class="erro-campo" th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"></span>
+
+        <label for="confirmacaoSenha">Repetir a senha</label>
+        <input type="password" id="confirmacaoSenha" th:field="*{confirmacaoSenha}">
+        <span class="erro-campo" th:if="${#fields.hasErrors('confirmacaoSenha')}" th:errors="*{confirmacaoSenha}"></span>
+
+        <button type="submit" class="botao">Cadastrar</button>
+    </form>
+
+    <p class="rodape-cartao">
+        Ja tem conta? <a th:href="@{/login}">Entrar</a>
+    </p>
+</main>
+
+<footer th:replace="~{fragmentos/layout :: rodape}"></footer>
+
+</body>
+</html>
