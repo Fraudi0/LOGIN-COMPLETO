@@ -1,0 +1,264 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--fonte);
+    background: var(--fundo);
+    color: var(--texto);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body.tela-centralizada {
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    color: var(--destaque);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    margin: 0 0 4px;
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 18px;
+    margin: 0 0 8px;
+}
+
+.subtitulo {
+    margin: 0 0 20px;
+    color: var(--texto-suave);
+    font-size: 14px;
+}
+
+.topo {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 14px 28px;
+    background: var(--superficie);
+    border-bottom: 1px solid var(--borda);
+}
+
+.marca {
+    font-weight: 700;
+    color: var(--texto);
+}
+
+.links {
+    display: flex;
+    gap: 18px;
+    font-size: 14px;
+}
+
+.sessao {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+}
+
+.conteudo {
+    flex: 1;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 32px 24px;
+}
+
+.cartao {
+    width: 100%;
+    max-width: 380px;
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 32px;
+    margin: 40px auto;
+}
+
+.bloco {
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 20px;
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    margin: 14px 0 6px;
+    font-size: 13px;
+    color: var(--texto-suave);
+}
+
+input, select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    background: var(--fundo-campo);
+    color: var(--texto);
+    font-size: 14px;
+}
+
+input:focus, select:focus {
+    outline: 2px solid var(--destaque);
+    outline-offset: 1px;
+}
+
+.botao {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 11px 18px;
+    width: 100%;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+    background: var(--destaque);
+    color: var(--texto-destaque);
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.bloco .botao {
+    width: auto;
+}
+
+.botao:hover {
+    opacity: 0.9;
+    text-decoration: none;
+}
+
+.botao-pequeno {
+    padding: 6px 10px;
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    background: var(--fundo-campo);
+    color: var(--texto);
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.botao-pequeno.perigo {
+    border-color: var(--perigo);
+    color: var(--perigo);
+}
+
+.botao-texto {
+    border: none;
+    background: none;
+    color: var(--destaque);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+}
+
+.aviso {
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-bottom: 14px;
+    background: var(--fundo-campo);
+    border: 1px solid var(--borda);
+}
+
+.aviso.erro {
+    border-color: var(--perigo);
+    color: var(--perigo);
+}
+
+.aviso.sucesso {
+    border-color: var(--sucesso);
+    color: var(--sucesso);
+}
+
+.erro-campo {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--perigo);
+}
+
+.rodape-cartao {
+    margin-top: 20px;
+    font-size: 13px;
+    text-align: center;
+    color: var(--texto-suave);
+}
+
+.rodape {
+    padding: 16px 28px;
+    text-align: center;
+    color: var(--texto-suave);
+}
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--superficie);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    overflow: hidden;
+    font-size: 14px;
+}
+
+.tabela th, .tabela td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--borda);
+}
+
+.tabela th {
+    background: var(--fundo-campo);
+    font-size: 13px;
+    color: var(--texto-suave);
+}
+
+.linha-form {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.linha-form select {
+    width: auto;
+}
+
+.acoes {
+    display: flex;
+    gap: 6px;
+}
+
+.selo {
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: 12px;
+    border: 1px solid var(--borda);
+}
+
+.selo.ativo {
+    color: var(--sucesso);
+    border-color: var(--sucesso);
+}
+
+.selo.inativo {
+    color: var(--texto-suave);
+}
+
+.lista-perfis {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 14px;
+}
