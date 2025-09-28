@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragmentos/layout :: cabecalho('Usuarios')}"></head>
+
+<body>
+
+<header th:replace="~{fragmentos/layout :: menu}"></header>
+
+<main class="conteudo">
+    <h1>Usuarios cadastrados</h1>
+
+    <div class="aviso sucesso" th:if="${sucesso}" th:text="${sucesso}"></div>
+    <div class="aviso erro" th:if="${erro}" th:text="${erro}"></div>
+
+    <table class="tabela">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Perfil</th>
+            <th>Situacao</th>
+            <th>Acoes</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="u : ${usuarios}">
+            <td th:text="${u.nome}">Fulano</td>
+            <td th:text="${u.email}">email@exemplo.com</td>
+            <td>
+                <form th:action="@{'/admin/usuarios/' + ${u.id} + '/perfil'}" method="post" class="linha-form">
+                    <select name="perfil">
+                        <option th:each="p : ${perfis}"
+                                th:value="${p}"
+                                th:text="${p.descricao}"
+                                th:selected="${u.perfis.contains(p)}">Usuario</option>
+                    </select>
+                    <button type="submit" class="botao-pequeno">Salvar</button>
+                </form>
+            </td>
+            <td>
+                <span th:text="${u.ativo} ? 'Ativo' : 'Inativo'"
+                      th:class="${u.ativo} ? 'selo ativo' : 'selo inativo'">Ativo</span>
+            </td>
+            <td class="acoes">
+                <form th:action="@{'/admin/usuarios/' + ${u.id} + '/status'}" method="post">
+                    <button type="submit" class="botao-pequeno" th:text="${u.ativo} ? 'Desativar' : 'Ativar'">Desativar</button>
+                </form>
+                <form th:action="@{'/admin/usuarios/' + ${u.id} + '/excluir'}" method="post"
+                      onsubmit="return confirm('Remover este usuario?');">
+                    <button type="submit" class="botao-pequeno perigo">Excluir</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+
+<footer th:replace="~{fragmentos/layout :: rodape}"></footer>
+
+</body>
+</html>
