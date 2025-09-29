@@ -1,0 +1,14 @@
+:root {
+    --fonte: "Segoe UI", Arial, sans-serif;
+    --fundo: #12161c;
+    --superficie: #1b212b;
+    --fundo-campo: #232b36;
+    --borda: #2f3845;
+    --texto: #e6e9ee;
+    --texto-suave: #9aa4b2;
+    --destaque: #4f8cff;
+    --texto-destaque: #0d1117;
+    --sucesso: #4ade80;
+    --perigo: #f87171;
+    --raio: 10px;
+}
