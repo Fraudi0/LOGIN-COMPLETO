@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragmentos/layout :: cabecalho('Painel')}"></head>
+
+<body>
+
+<header th:replace="~{fragmentos/layout :: menu}"></header>
+
+<main class="conteudo">
+    <h1>Ola, <span th:text="${usuario.nome}">Fulano</span></h1>
+    <p class="subtitulo" th:text="${usuario.email}">email@exemplo.com</p>
+
+    <section class="bloco">
+        <h2>Seus acessos</h2>
+        <ul class="lista-perfis">
+            <li th:each="perfil : ${usuario.authorities}" th:text="${perfil.authority}">ROLE_USUARIO</li>
+        </ul>
+    </section>
+
+    <section class="bloco" sec:authorize="hasAnyRole('ADMIN','GERENTE')">
+        <h2>Area de gerencia</h2>
+        <p>Relatorios e acompanhamento da equipe.</p>
+        <a class="botao" th:href="@{/gerencia/relatorios}">Abrir relatorios</a>
+    </section>
+
+    <section class="bloco" sec:authorize="hasRole('ADMIN')">
+        <h2>Area administrativa</h2>
+        <p>Gestao de contas e perfis de acesso.</p>
+        <a class="botao" th:href="@{/admin/usuarios}">Gerenciar usuarios</a>
+    </section>
+</main>
+
+<footer th:replace="~{fragmentos/layout :: rodape}"></footer>
+
+</body>
+</html>

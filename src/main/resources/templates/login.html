@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragmentos/layout :: cabecalho('Entrar')}"></head>
+
+<body class="tela-centralizada">
+
+<main class="cartao">
+    <h1 th:text="${tema.titulo}">Login Seguro</h1>
+    <p class="subtitulo">Entre com a sua conta para continuar</p>
+
+    <div class="aviso erro" th:if="${param.erro}">E-mail ou senha incorretos.</div>
+    <div class="aviso" th:if="${param.saiu}">Voce saiu da sua conta.</div>
+    <div class="aviso sucesso" th:if="${sucesso}" th:text="${sucesso}"></div>
+
+    <form th:action="@{/login}" method="post">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required autofocus>
+
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" required>
+
+        <button type="submit" class="botao">Entrar</button>
+    </form>
+
+    <p class="rodape-cartao">
+        Ainda nao tem conta? <a th:href="@{/cadastro}">Cadastre-se</a>
+    </p>
+</main>
+
+<footer th:replace="~{fragmentos/layout :: rodape}"></footer>
+
+</body>
+</html>
