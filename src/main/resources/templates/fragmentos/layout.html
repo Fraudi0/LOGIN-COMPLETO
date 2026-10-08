@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:fragment="cabecalho(titulo)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo} + ' - ' + ${tema.titulo}">Login Seguro</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{'/css/temas/' + ${tema.nome} + '.css'}">
+</head>
+
+<body>
+
+<header th:fragment="menu" class="topo">
+    <a class="marca" th:href="@{/painel}" th:text="${tema.titulo}">Login Seguro</a>
+
+    <nav class="links" sec:authorize="isAuthenticated()">
+        <a th:href="@{/painel}">Painel</a>
+        <a th:href="@{/gerencia/relatorios}" sec:authorize="hasAnyRole('ADMIN','GERENTE')">Relatorios</a>
+        <a th:href="@{/admin/usuarios}" sec:authorize="hasRole('ADMIN')">Usuarios</a>
+    </nav>
+
+    <div class="sessao" sec:authorize="isAuthenticated()">
+        <span sec:authentication="principal.nome">Fulano</span>
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="botao-texto">Sair</button>
+        </form>
+    </div>
+</header>
+
+<footer th:fragment="rodape" class="rodape">
+    <small th:text="${tema.rodape}">Projeto academico</small>
+</footer>
+
+</body>
+</html>
